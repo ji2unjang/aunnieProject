@@ -10,6 +10,17 @@
 		SELECT member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree FROM MEMBER
 		WHERE member_no= #{member_no}
 	</select>
+	<select id="selectPage" resultType="member" parameterType="criteria">
+		SELECT member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree
+		FROM 
+		(SELECT rownum rn,member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree 
+			FROM (SELECT member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree FROM MEMBER order by member_no desc)
+				WHERE rownum &lt;=#{endNo})
+		WHERE rn&gt;=#{startNo}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT COUNT(*) cnt FROM MEMBER
+	</select>
 	<insert id="insertOne" parameterType="member">
 		INSERT INTO MEMBER VALUES(seq_member_no.nextval,#{id},#{pw},#{name},#{nickname},#{email},#{phone},#{address},
 		#{birthday},#{regdate},#{mileage},#{total_price},#{degree})

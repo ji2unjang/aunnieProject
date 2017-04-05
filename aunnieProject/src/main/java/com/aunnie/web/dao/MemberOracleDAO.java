@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.aunnie.web.Criteria;
 import com.aunnie.web.dto.MemberDTO;
 
 
@@ -15,20 +16,21 @@ public class MemberOracleDAO implements MemberDAO{
 	
 	@Autowired
 	private SqlSession session;
+	private final String namespace="com.aunnie.member";
 
 	@Override
 	public List<MemberDTO> selectAll() {
-		return session.selectList("com.aunnie.member.selectAll");
+		return session.selectList(namespace+".selectAll");
 	}
 
 	@Override
 	public MemberDTO selectOne(int no) {
-		return session.selectOne("com.aunnie.member.selectOne", no);
+		return session.selectOne(namespace+".selectOne");
 	}
 
 	@Override
 	public void insertOne(MemberDTO dto) {
-		session.insert("com.aunnie.member.insertOne",dto);
+		session.insert(namespace+".insertOne",dto);
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public class MemberOracleDAO implements MemberDAO{
 
 	@Override
 	public void deleteOne(int no) {
-		session.update("com.aunnie.member.deleteOne",no);
+		session.update(namespace+".deleteOne",no);
 	}
 
 	@Override
@@ -46,4 +48,16 @@ public class MemberOracleDAO implements MemberDAO{
 		return session.selectOne("com.aunnie.member.findUser", memberDto);
 	}
 	
+
+	@Override
+	public int getTotal() {
+		return session.selectOne(namespace+".getCount");
+	}
+
+	@Override
+	public List<MemberDTO> selectPage(Criteria cri) {
+		return session.selectList(namespace+".selectPage",cri);
+
+	}
+
 }

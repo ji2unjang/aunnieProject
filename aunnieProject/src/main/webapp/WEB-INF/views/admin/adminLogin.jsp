@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="google-signin-client_id" content="418825699611-ahr5b990icl7qb7ifpr2ftaca7b48rb2.apps.googleusercontent.com">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/components/grid.min.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -71,7 +69,6 @@ img.ui.image{
 </style>
 </head>
 <body>
-<img class="ui medium image" src="images/logo3.png" alt="logo2" />
 <div class="ui container loginForm">
 	<h2 class="ui dividing header pageHeader">Administrator Page</h2>
 	<div class="ui formOut">
@@ -97,6 +94,5 @@ img.ui.image{
 		</div>
 	</div>
 </div>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
 </body>
 </html>

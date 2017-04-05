@@ -38,5 +38,32 @@
 	</div>
 	</form>
 
+ 	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>PW</th>
+			<th>NAME</th>
+			<th>닉네임</th>
+			<th>이메일</th>
+			<th>핸드폰</th>
+			<th>주소</th>
+		</tr>
+		
+	<c:forEach var="m" items="${list }">
+		<tr>
+		<td>${m.id }</td>
+		<td>${m.pw }</td>
+		<td>${m.name }</td>
+		<td>${m.nickname }</td>
+		<td>${m.email }</td>
+		<td>${m.phone }</td>
+		<td>${m.address }</td>
+		</tr>
+	</c:forEach>
+	<tr>
+		<td><a href="sign">회원가입</a></td>
+		<td><a href="login">로그인</a></td>
+	</tr>
+	</table>
 </body>
 </html>

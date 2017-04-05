@@ -7,15 +7,17 @@
 		<typeAlias type="com.aunnie.web.dto.MemberDTO" alias="member"/>
 		<typeAlias type="com.aunnie.web.dto.EventDTO" alias="event"/>
 		<typeAlias type="com.aunnie.web.dto.QuestionsDTO" alias="qdto"/>
-		
+		<typeAlias type="com.aunnie.web.dto.QuestionsDTO" alias="qdto"/>
 		<typeAlias type="com.aunnie.web.dto.MirrorTalkDTO" alias="talk"/>
-
+		<typeAlias type="com.aunnie.web.dto.PaymentDTO" alias="payment"/>
+		<typeAlias type="com.aunnie.web.dto.OrderDTO" alias="order"/>
+		<typeAlias type="com.aunnie.web.dto.CouponDTO" alias="coupon"/>
 		<typeAlias type="com.aunnie.web.dto.ProductDTO" alias="product"/>
 		<typeAlias type="com.aunnie.web.dto.ProductOptionDTO" alias="pOption"/>
 		<typeAlias type="com.aunnie.web.dto.PaymentDTO" alias="payment"/>
 		<typeAlias type="com.aunnie.web.dto.OrderDTO" alias="order"/>
 		<typeAlias type="com.aunnie.web.dto.CouponDTO" alias="coupon"/>
-
 		<typeAlias type="com.aunnie.web.dto.OrderDetailDTO" alias="orderDetail"/>
+		<typeAlias type="com.aunnie.web.Criteria" alias="criteria"/>
 	</typeAliases>
 </configuration>

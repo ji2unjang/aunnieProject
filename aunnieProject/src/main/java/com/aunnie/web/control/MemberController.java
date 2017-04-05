@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aunnie.web.Criteria;
 import com.aunnie.web.dto.MemberDTO;
 import com.aunnie.web.service.MemberService;
 
@@ -19,10 +21,16 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("/memberList")
-	public ModelAndView list() {
-		return new ModelAndView("list", "list", memberService.getAll());
+	public ModelAndView list(@RequestParam(name="pno",defaultValue="1") int pno) {
+		Criteria cri = new Criteria();
+		// # of row per page : 10
+		// pno : current page
+		cri.setPerPageNum(10);
+		cri.setTotalCount(memberService.totalCount());
+		cri.setPage(pno);
+		return new ModelAndView("list", "list", memberService.getPage(cri));
 	}
-
+	
 	@RequestMapping("/sign")
 	public String sing() {
 
@@ -37,10 +45,7 @@ public class MemberController {
 		return "redirect:memberList";
 	}
 	
-	@RequestMapping("/login")
-	public String login(){
-		return "login";
-	}
+
 	
 	@RequestMapping("/loginOk")
 	public String loginOk(MemberDTO memberdto, Model model){
@@ -56,6 +61,9 @@ public class MemberController {
 		}
 		
 	}
-	
 
+	@RequestMapping("/adminLog")
+	public String login(){
+		return "login";
+	}
 }

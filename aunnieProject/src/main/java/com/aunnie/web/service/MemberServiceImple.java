@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.aunnie.web.Criteria;
 import com.aunnie.web.dao.MemberDAO;
 import com.aunnie.web.dto.MemberDTO;
 @Service("memberService")
@@ -42,6 +43,15 @@ public class MemberServiceImple implements MemberService{
 	@Override
 	public MemberDTO findUser(MemberDTO memberdto) {
 		return dao.findUser(memberdto);
+	}
+	@Override
+	public int totalCount() {
+		return dao.getTotal();
+	}
+
+	@Override
+	public List<MemberDTO> getPage(Criteria cri) {
+		return dao.selectPage(cri);
 	}
 
 }

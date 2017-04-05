@@ -17,23 +17,23 @@ public class MirrorTalkController {
 	@Resource(name="MirrorTalkService")
 	private MirrorTalkService ms;
 	
-	@RequestMapping("/talkList")
+	@RequestMapping("/talkList3")
 		public ModelAndView list(){
 		return new ModelAndView("talkList", "list", ms.getAll());
 	}
 	
-	@RequestMapping("/detail")
+	@RequestMapping("/detail3")
 	public ModelAndView detail(
 			@RequestParam("talk_no")int talk_no){
 		return new ModelAndView("talkDetail", "dto", ms.getOne(talk_no));
 	}
 	
-	@RequestMapping("/writeForm")
+	@RequestMapping("/writeForm3")
 	public String writeForm(){
 		return "writeForm";
 	}
 	
-	@RequestMapping("/writeOk")
+	@RequestMapping("/writeOk3")
 	public String write(
 			@ModelAttribute("dto")MirrorTalkDTO dto,
 			HttpServletRequest req){
@@ -42,21 +42,21 @@ public class MirrorTalkController {
 		return "redirect:/talkList";
 	}
 	
-	@RequestMapping("/modifyForm")
+	@RequestMapping("/modifyForm3")
 	public ModelAndView modifyFrom(
 			@RequestParam("talk_no")int talk_no){
 		return new ModelAndView("modifyForm", "dto", ms.getOne(talk_no));
 		
 	}
 	
-	@RequestMapping("/modifyOk")
+	@RequestMapping("/modifyOk3")
 	public String modifyOk(
 			@ModelAttribute("dto")MirrorTalkDTO dto){
 		ms.modifyOne(dto);
 		return "redirect:/talkList";
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/delete3")
 	public String delete(
 			@RequestParam("talk_no")int talk_no){
 		ms.deleteOne(talk_no);

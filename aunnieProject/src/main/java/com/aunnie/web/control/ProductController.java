@@ -16,6 +16,6 @@ public class ProductController {
 	
 	@RequestMapping("/productList")
 	public ModelAndView list(){
-		return new ModelAndView("productList","list",service.getAll());
+		return new ModelAndView("pdList","list",service.getAll());
 	}
 }

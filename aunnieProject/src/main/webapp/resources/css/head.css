@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+ul li{
+  display: inline;
+}
+
+body{
+	background:white;
+}
+
+
+.header_logo {
+	width:40%;
+	min-width:20%;
+}
+#searchbar {
+	margin: auto;
+	width: 30%;
+	border: 2px solid #ec488c;
+	height: 10%;
+	display:inline-block;
+
+	min-width:100%;
+}
+
+#searchbar input[type=text] {
+	display: inline;
+	border-style: none;
+	width: 75%;
+	padding: 5px;
+	text-indent: 30px;
+	height: 40px;
+	font-size: 14px;
+}
+
+#searchbar input[type=button] {
+	padding: 15px;
+	width: 50px;
+	height: 30px;
+	background-image: url(../img/icon_search.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: right;
+	border: none;
+	background-color: #fff;
+	margin: 10px;
+	position: absolute;
+	float: right;
+}
+
+#menuList .item{
+	font-size:1.2rem;
+	padding-right:3%;
+	padding-left:3%;
+}
+#menuList .item .menu .item{
+	font-size:0.8rem;
+}
+
+.bar{
+	margin-left:2%;
+	margin-right:2%;
+}
+
+.ui.menu .item .menu a.item:hover{
+	color:#ec488c;
+	background-color:white;
+}
+.ui.link.menu .menu>.item:hover, .ui.link.menu>.item:hover, .ui.menu .menu>.link.item:hover, .ui.menu .menu>a.item:hover, .ui.menu>.link.item:hover, .ui.menu>a.item:hover{
+		color:#ec488c;
+	background-color:white;
+}
+
+

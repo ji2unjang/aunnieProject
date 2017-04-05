@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.titleDiv{
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+select.ui.dropdown {
+	margin-top:10px;
+    height: 30px;
+    padding: .5em;
+    border: 1px solid rgba(39,41,43,.15);
+    visibility: visible;
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+
+
+
+
