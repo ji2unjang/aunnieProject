@@ -1,15 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+<link rel="stylesheet" type="text/css" href="css/head.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/list.css" />
 <link rel="stylesheet" type="text/css" href="css/pdList.css" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
 <script type="text/javascript">
 	$(function() {
+		$('.ui.rating').rating();
+		$('.ui.accordion').accordion();
 		$('.ui.dropdown').dropdown();
 		$('.menu .item').tab();
 		$("#openModal").click(function() {
@@ -156,7 +167,8 @@
 
 
 			<h3 class="ui dividing header">
-				포토리뷰 <span class="right aligned"> <a href="">> 리뷰 작성하기</a>
+				포토리뷰 <span class="right aligned"> <a href="javascript:;"
+					id="openModal">> 리뷰 작성하기</a>
 				</span>
 			</h3>
 			<div class="ui items">
@@ -237,61 +249,131 @@
 
 		<div class="ui modal">
 			<div class="header">리뷰작성하기</div>
-			<div class="image content">
-				<div class="description">
-					<div class="ui internally celled grid">
-						<div class="row">
-							<div class="six wide column">
-								<img src="img/product1.jpg">
-							</div>
-							<div class="ten wide column">
-								<table class="ui collapsing table" id="pdTable">
-									<tbody>
-										<tr>
-											<td>상품명</td>
-											<td>메니큐어</td>
-										</tr>
-										<tr>
-											<td>옵션</td>
-											<td>체리블라썸</td>
-										</tr>
-									</tbody>
-								</table>
+
+			<div id="reviewDiv">
+				<div class="image content">
+					<div class="description">
+						<div class="ui internally celled grid">
+							<div class="row">
+								<div class="six wide column">
+									<img src="img/product1.jpg">
+								</div>
+								<div class="ten wide column">
+									<table class="ui collapsing table" id="pdTable">
+										<tbody>
+											<tr>
+												<td>상품명</td>
+												<td>메니큐어</td>
+											</tr>
+											<tr>
+												<td>옵션</td>
+												<td>체리블라썸</td>
+											</tr>
+											<tr>
+												<td>별점</td>
+												<td><div class="ui star rating" data-rating="5"
+														data-max-rating="5"></div></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="reviewDiv">
-				<div class="field">
-					<div class="ui action input">
-						<label for="attachmentName" class="ui icon button btn-file">
-							<i class="attach basic icon"></i> <input type="file"
-							id="attachmentName" name="attachmentName" style="display: none">
-						</label><input type="text" id="_attachmentName">
-					</div>
-				</div>
-			<form class="ui reply form">
+
+				<form class="ui reply form">
 					<div class="field">
+						<div class="ui action input">
+							<input type="text" id="_attachmentName"> <label
+								for="attachmentName" class="ui icon button btn-file"> <i
+								class="attach basic icon"></i> <input type="file"
+								id="attachmentName" name="attachmentName" style="display: none">
+							</label>
+						</div>
 						<textarea></textarea>
 					</div>
-			</form>
+				</form>
 			</div>
 			<div class="actions">
-				<div class="ui black deny button">Nope</div>
+				<div class="ui black deny button">취소</div>
 				<div class="ui blue labeled submit icon button">
-					<i class="icon edit"></i> Add Reply
+					<i class="icon edit"></i> 리뷰남기기
 				</div>
 			</div>
 		</div>
 
 
+		<!-- qna-->
+		<div class="ui bottom attached tab segment" data-tab="third">
+			<table class="ui unstackable table">
+				<thead>
+					<tr>
+						<th>작성자</th>
+						<th>제목</th>
+						<th>답변상태</th>
+						<th>작성일자</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>cherry blossom</td>
+						<td><i class="icon lock"></i>저기요 .. 배송 언제쯤..</td>
+						<td>답변대기</td>
+						<td>2016.02.03</td>
+					</tr>
+					<tr>
+						<td>spring</td>
+						<td>색상이요</td>
+						<td>답변완료</td>
+						<td>2017.02.03</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="4">
+							<div class="ui right floated pagination menu">
+								<a class="icon item"> <i class="left chevron icon"></i>
+								</a> <a class="item">1</a> <a class="item">2</a> <a class="item">3</a>
+								<a class="item">4</a> <a class="icon item"> <i
+									class="right chevron icon"></i>
+								</a>
+							</div>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<div class="ui styled fluid accordion">
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What is a dog?
+  </div>
+  <div class="active content">
+    <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    What kinds of dogs are there?
+  </div>
+  <div class="content">
+    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    How do you acquire a dog?
+  </div>
+  <div class="content">
+    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+    <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+  </div>
+</div>
+		</div>
 
-		<div class="ui bottom attached tab segment" data-tab="third">Q&A</div>
-		<div class="ui bottom attached tab segment" data-tab="fourth">
-			상품정보</div>
-		<div class="ui bottom attached tab segment" data-tab="fifth">
-			배송/교환/환불</div>
+	<div class="ui bottom attached tab segment" data-tab="fourth">
+		상품정보</div>
+	<div class="ui bottom attached tab segment" data-tab="fifth">
+		배송/교환/환불</div>
 
 	</div>
 </body>
