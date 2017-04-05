@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aunnie.section">
+	<select id="selectAll" resultType="section">
+		SELECT section_no,section_name,division_no,coupon_no
+		FROM SECTION
+	</select>
+	<select id="selectOne" resultType="section" parameterType="int">
+		SELECT section_no,section_name,division_no,coupon_no
+		FROM SECTION
+		WHERE SECTION_NO=#{section_no}
+	</select>
+	<insert id="insertOne" parameterType="section">
+		INSERT INTO SECTION
+		VALUES(SEQ_CATEGORY_NO.nextval,section_name,division_no,coupon_no);
+	</insert>
+	<update id="updateOne" parameterType="section">
+		UPDATE SECTION
+		SET SECTION_NAME=#{section_name},
+			COUPON_NO=#{coupon_no},
+			DIVISION_NO=#{division_no}
+		WHERE SECTION_NO=#{section_no}
+	</update>
+	<delete id="deleteOne" parameterType="int">
+		DELETE SECTION
+		WHERE SECTION_NO=#{section_no}
+	</delete>
+</mapper>

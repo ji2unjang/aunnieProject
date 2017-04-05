@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aunnie.division">
+	<select id="selectAll" resultType="division">
+		SELECT division_no,division_name,category_no,coupon_no
+		FROM DIVISION
+	</select>
+	<select id="selectByCategory" resultType="division" parameterType="int">
+		SELECT division_no,division_name,category_no,coupon_no
+		FROM DIVISION
+		WHERE CATEGORY_NO = #{category_no}
+	</select>
+	<select id="selectOne" resultType="division" parameterType="int">
+		SELECT division_no,division_name,category_no,coupon_no
+		FROM DIVISION
+		WHERE DIVISION_NO=#{division_no}
+	</select>
+	<insert id="insertOne" parameterType="division">
+		INSERT INTO DIVISION
+		VALUES(SEQ_CATEGORY_NO.nextval,division_name,category_no,coupon_no);
+	</insert>
+	<update id="updateOne" parameterType="division">
+		UPDATE DIVISION
+		SET DIVISION_NAME=#{division_name},
+			COUPON_NO=#{coupon_no},
+			CATEGORY_NO=#{category_no}
+		WHERE DIVISION_NO=#{division_no}
+	</update>
+	<delete id="deleteOne" parameterType="int">
+		DELETE DIVISION
+		WHERE DIVISION_NO=#{division_no}
+	</delete>
+</mapper>

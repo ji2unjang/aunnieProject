@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aunnie.category">
+	<select id="selectAll" resultType="category">
+		SELECT category_no,category_name,coupon_no
+		FROM CATEGORY
+	</select>
+	<select id="selectOne" resultType="category" parameterType="int">
+		SELECT category_no,category_name,coupon_no
+		FROM CATEGORY
+		WHERE CATEGORY_NO=#{category_no}
+	</select>
+	<insert id="insertOne" parameterType="category">
+		INSERT INTO CATEGORY
+		VALUES(SEQ_CATEGORY_NO.nextval,category_name,coupon_no);
+	</insert>
+	<update id="updateOne" parameterType="category">
+		UPDATE CATEGORY
+		SET CATEGORY_NAME=#{category_name},
+			COUPON_NO=#{coupon_no}
+		WHERE CATEGORY_NO=#{category_no}
+	</update>
+	<delete id="deleteOne" parameterType="int">
+		DELETE CATEGORY
+		WHERE CATEGORY_NO=#{category_no}
+	</delete>
+</mapper>

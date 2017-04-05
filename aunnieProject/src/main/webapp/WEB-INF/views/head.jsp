@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/head.css" />
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="container">
 		<div class="ui grid">
 			<div class="left floated five wide column">
@@ -57,41 +42,29 @@
 		<div class="container" id="menuList">
 			<a class="item"> <i class="home icon"></i> 전체메뉴
 			</a>
-			<div class="ui simple dropdown item">
-				메이크업 <i class="dropdown icon"></i>
-				<div class="menu">
-					<a class="item">Edit Profile</a> <a class="item">Choose
-						Language</a> <a class="item">Account Settings</a>
-				</div>
-			</div>
-			<div class="ui simple dropdown item">
-				스킨케어 <i class="dropdown icon"></i>
-				<div class="menu">
-					<div class="header">
-						<i class="tags icon"></i> 클렌징
+			<c:forEach items="${categories }" var="category">
+				<div class="ui simple dropdown item">
+					${category.category_name}<i class="dropdown icon"></i>	
+					<div class="menu">
+						<c:forEach var="division" items="${divisions }">
+							<c:if test="${category.category_no==division.category_no }">
+								<div class="header">
+									<i class="tags icon"></i>
+									${division.division_name }
+								</div>
+								<div class="divider"></div>
+								<c:forEach var="section" items="${sections}">
+									<c:if test="${division.division_no==section.division_no }">
+										<a class="item">${section.section_name} </a>
+									</c:if>
+								</c:forEach>
+							</c:if>
+						</c:forEach>
 					</div>
-					<div class="divider"></div>
-					<a class="item">메이크업 리무버</a> <a class="item">페이스워시</a> <a
-						class="item">필링 &스크럽</a>
-					<div class="header">
-						<i class="tags icon"></i>모이스처라이징
-					</div>
-					<a class="item">메이크업 리무버</a> <a class="item">페이스워시</a> <a
-						class="item">필링 &스크럽</a>
-				</div>
-			</div>
-			<div class="ui simple dropdown item">
-				헤어/바디 <i class="dropdown icon"></i>
-				<div class="menu">
-					<a class="item">Edit Profile</a> <a class="item">Choose
-						Language</a> <a class="item">Account Settings</a>
-				</div>
-			</div>
 
-
+				</div>
+			</c:forEach>
 			<a class="item"> 미러톡 </a> <a class="item"> 프로모션 </a> <a class="item">
 				타임세일 </a> <a class="item"> 베스트 </a>
 		</div>
 	</div>
-</body>
-</html>

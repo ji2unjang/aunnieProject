@@ -20,12 +20,12 @@ public class PaymentController {
 	@Resource(name="paymentService")
 	private PaymentService ps;
 	
-	@RequestMapping("/paymentList")
+	@RequestMapping("/paymentList4")
 	public ModelAndView list(){
 		return new ModelAndView("payment","payment",ps.selectAll());
 	}
 	
-	@RequestMapping("/paymentdetail")
+	@RequestMapping("/paymentdetail4")
 	public ModelAndView paymentdetail(
 			@RequestAttribute("payment_no")int payment_no){
 		return new ModelAndView("paymentDetail","dto",ps.selectOne(payment_no));
