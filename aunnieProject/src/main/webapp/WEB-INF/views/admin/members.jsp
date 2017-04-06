@@ -23,10 +23,6 @@
 <script type="text/javascript">
 	$(function(){
 		
-		$('#example1').calendar({
-			  type: 'date'
-			});
-		
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
 		
@@ -102,12 +98,6 @@
 		<div class="ui four column grid">
 			<!-- 달력시작 -->
 			<div class="column">
-				<div class="ui calendar" id="example1">
-				  <div class="ui input left icon">
-				    <i class="calendar icon"></i>
-				    <input type="text" placeholder="Date/Time">
-				  </div>
-				</div>
 	    	</div>
 		    <div class="column">
 			</div>
