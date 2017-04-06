@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/components/grid.min.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
 <style type="text/css">
 .ui.icon.input>i.icon:not(.link) {
     pointer-events: visiblepainted;
@@ -18,7 +21,8 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-		
+		    $( "#testDatepicker" ).datepicker({
+		    });
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
 		
@@ -94,6 +98,7 @@
 		<div class="ui four column grid">
 			<!-- 달력시작 -->
 			<div class="column">
+				<input type="text" id="testDatepicker"> 
 	    	</div>
 		    <div class="column">
 			</div>
