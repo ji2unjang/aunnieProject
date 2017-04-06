@@ -26,8 +26,7 @@
 }
 </style>
 <script type="text/javascript">
-	$(function(){
-		
+	$(function(){		
 		/* 달력 */
 		$( "#startDate" ).datepicker({
 			dateFormat:'ymmdd',
@@ -157,7 +156,7 @@
 
 	<!-- 달력 -->
 	<div class="column">
-		<div class="ui five column grid form">
+		<div class="ui four column grid form">
 			<!-- calendar start -->
 			<div class="column">
 				<div class="ui icon input">
@@ -237,8 +236,9 @@
   	 <tr>
       <th></th>
       <th colspan="8">
-      	 <div class="ui right floated small primary labeled icon button">
-		   <i class="user icon"></i> Add User
+      	 <div class="ui right floated small labeled icon button">
+		   <i class="user icon"></i>
+		   Remove
 		 </div>
 		 <div class="ui small  button">
 		   Approve
