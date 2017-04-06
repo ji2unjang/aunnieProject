@@ -18,6 +18,7 @@
 		<typeAlias type="com.aunnie.web.dto.CouponDTO" alias="coupon"/>
 		<typeAlias type="com.aunnie.web.dto.OrderDetailDTO" alias="orderDetail"/>
 		<typeAlias type="com.aunnie.web.Criteria" alias="criteria"/>
+		<typeAlias type="com.aunnie.web.DatePick" alias="datepick"/>
 		<typeAlias type="com.aunnie.web.dto.CategoryDTO" alias="category"/>
 		<typeAlias type="com.aunnie.web.dto.DivisionDTO" alias="division"/>
 		<typeAlias type="com.aunnie.web.dto.SectionDTO" alias="section"/>

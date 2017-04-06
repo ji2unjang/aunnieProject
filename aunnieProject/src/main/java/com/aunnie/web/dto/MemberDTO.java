@@ -38,6 +38,7 @@ public class MemberDTO {
 		this.total_price = total_price;
 		this.degree = degree;
 	}
+	
 	public int getMember_no() {
 		return member_no;
 	}

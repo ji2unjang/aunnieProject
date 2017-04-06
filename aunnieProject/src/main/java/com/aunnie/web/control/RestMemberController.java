@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aunnie.web.DatePick;
 import com.aunnie.web.dto.MemberDTO;
 import com.aunnie.web.service.MemberService;
 
@@ -27,6 +28,18 @@ public class RestMemberController {
 		System.out.println("no::"+no);
 		List<MemberDTO> list= new ArrayList<>();
 		list.add(service.readOne(no));
+		return list;
+	}
+	
+	@RequestMapping("/server02")
+	@ResponseBody
+	public List<MemberDTO> cal(
+			@RequestParam(name="s") String startDate,
+			@RequestParam(name="e") String endDate){
+		
+		System.out.println("s::"+startDate);
+		System.out.println("e::"+endDate);
+		List<MemberDTO> list= service.readCal(new DatePick(startDate, endDate));
 		return list;
 	}
 }

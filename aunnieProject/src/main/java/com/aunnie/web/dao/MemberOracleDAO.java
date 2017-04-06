@@ -1,5 +1,6 @@
 package com.aunnie.web.dao;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aunnie.web.Criteria;
+import com.aunnie.web.DatePick;
 import com.aunnie.web.dto.MemberDTO;
 
 
@@ -27,7 +29,7 @@ public class MemberOracleDAO implements MemberDAO{
 	public MemberDTO selectOne(int no) {
 		return session.selectOne(namespace+".selectOne",no);
 	}
-
+	
 	@Override
 	public void insertOne(MemberDTO dto) {
 		session.insert(namespace+".insertOne",dto);
@@ -52,6 +54,14 @@ public class MemberOracleDAO implements MemberDAO{
 	public int getTotal() {
 		return session.selectOne(namespace+".getCount");
 	}
+
+	@Override
+	public List<MemberDTO> selectCal(DatePick dp) {
+		return session.selectList(namespace+".selectCal", dp);
+	}
+
+
+	
 	
 	
 }
