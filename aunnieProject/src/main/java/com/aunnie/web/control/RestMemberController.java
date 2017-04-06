@@ -21,7 +21,7 @@ public class RestMemberController {
 	@Resource(name="memberService")
 	private MemberService service;
 	
-	@RequestMapping("/server01")
+	@RequestMapping("/searchMemberNo")
 	@ResponseBody
 	public List<MemberDTO> search(@RequestParam(name="no") int no){
 		System.out.println("no::"+no);

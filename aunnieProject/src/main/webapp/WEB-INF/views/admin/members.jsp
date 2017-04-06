@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/components/grid.min.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -21,7 +23,8 @@
 		
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
-		
+		//DatePicker.
+		$( "#datepicker" ).datepicker();
 		/* 카테고리 뭐 선택했는지 검색창에 placeholder로 뜨게 하기 */
 		$("#searchField").on("change", function(){
 			var sel = $("#searchField").val();
@@ -32,10 +35,12 @@
 		$("i.icon.search").on("click",function(){
 			var input = $("#searchText").val();
 			var sel = $("#searchField").val();
+			//회원번호로 검색한 경우.
 			if(sel=="회원번호"){searchByNumber(input);}
 		});
-		// Enter.
+		// Enter 키로 검색한 경우 
 		$("#searchText").keydown(function(){
+				// 회원번호로 검색한 경우.
 				if(event.keyCode==13){
 					var input = $("#searchText").val();
 					var sel = $("#searchField").val();
@@ -51,7 +56,7 @@
 				data:{
 					no:number
 				},
-				url:"server01",
+				url:"searchMemberNo",
 				success:function(object){
 					console.log("object::"+object);
 					var html="";
@@ -88,7 +93,7 @@
 		<ul>
 		</ul>
 	</div>
-
+<p>Date: <input type="text" id="datepicker"></p>
 <div class="ui two column right aligned  grid">
 	<div class="six column centered row">
 		<!-- 검색카테고리 그리드 -->
@@ -161,19 +166,19 @@
   </tfoot>
 </table>
  <div class="ui right floated pagination menu">
-   <c:if test="${criteria.prev==true }">
+   <c:if test="${criteria.prev==true}">
 	   <a class="icon item">
 	     <i class="left chevron icon"></i>
 	   </a>
    </c:if>
-   <c:forEach begin="${criteria.startPage }" end="${criteria.endPage }" var="index">
+   <c:forEach begin="${criteria.startPage}" end="${criteria.endPage}" var="index">
 	   <a class="item">${index}</a>
    </c:forEach>
-    <c:if test="${criteria.next==true }">
+   <c:if test="${criteria.next==true }">
 	   <a class="icon item">
 	     <i class="right chevron icon"></i>
 	   </a>
-    </c:if>
+   </c:if>
 </div>
 </body>
 </html>
