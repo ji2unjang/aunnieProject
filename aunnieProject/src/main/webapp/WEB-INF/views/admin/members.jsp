@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/components/grid.min.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
 <style type="text/css">
 .ui.icon.input>i.icon:not(.link) {
     pointer-events: visiblepainted;
@@ -20,7 +21,8 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-		
+		    $( "#testDatepicker" ).datepicker({
+		    });
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
 		//DatePicker.
@@ -95,28 +97,43 @@
 	</div>
 <p>Date: <input type="text" id="datepicker"></p>
 <div class="ui two column right aligned  grid">
-	<div class="six column centered row">
-		<!-- 검색카테고리 그리드 -->
-		<div class="column">
-	    	<select name="searchField" id="searchField" class="ui fluid search selection dropdown">
-		      	<option selected disabled>검색 분야 선택</option>
-		      	<option value="회원번호">회원번호</option>
-		      	<option value="아이디">아이디</option>
-		      	<option value="이름">이름</option>
-		      	<option value="등급">등급</option>
-			</select>
-    	</div>	<!-- 검색카테고리 그리드 끝 -->
-    	<!-- 검색창 -->
-	    <div class="column">
-			<div class="ui search">
-			  <div class="ui icon input">
-			    <input class="prompt" type="text" placeholder="검색" value="" id="searchText"> 
-			    <i class="search icon"id="searchIcon"></i>
-			  </div>
+	<div class="column">
+		<div class="ui four column grid">
+			<!-- 달력시작 -->
+			<div class="column">
+				<input type="text" id="testDatepicker"> 
+	    	</div>
+		    <div class="column">
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="ui four column right aligned grid">
+			<!-- 칸맞추기...ㅠㅠ -->
+			<div class="column"></div>
+			<!-- 검색카테고리 그리드 -->
+			<div class="column">
+		    	<select name="searchField" id="searchField" class="ui fluid dropdown">
+			      	<option value="회원번호">회원번호</option>
+			      	<option value="아이디">아이디</option>
+			      	<option value="이름">이름</option>
+			      	<option value="등급">등급</option>
+				</select>
+	    	</div>	<!-- 검색카테고리 그리드 끝 -->
+	    	<!-- 검색창 -->
+		    <div class="column">
+				<div class="ui search">
+				  <div class="ui icon input">
+				    <input class="prompt" type="text" placeholder="검색" value="" id="searchText"> 
+				    <i class="search icon"id="searchIcon"></i>
+				  </div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <table class="ui compact celled definition table">
   <thead class="full-width">
     <tr>
