@@ -21,12 +21,12 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-		    $( "#testDatepicker" ).datepicker({
-		    });
+		   
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
 		//DatePicker.
-		$( "#datepicker" ).datepicker();
+		 $( "#testDatepicker" ).datepicker({
+		 });
 		/* 카테고리 뭐 선택했는지 검색창에 placeholder로 뜨게 하기 */
 		$("#searchField").on("change", function(){
 			var sel = $("#searchField").val();
@@ -90,12 +90,6 @@
 </script>
 </head>
 <body>
-
-	<div>
-		<ul>
-		</ul>
-	</div>
-<p>Date: <input type="text" id="datepicker"></p>
 <div class="ui two column right aligned  grid">
 	<div class="column">
 		<div class="ui four column grid">
