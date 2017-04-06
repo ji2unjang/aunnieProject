@@ -11,10 +11,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/components/grid.min.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-
-<script type="text/javascript" src="/bower_components/semantic-ui-calendar/dist/calendar.min.js"></script>
-<link rel="stylesheet" href="/bower_components/semantic-ui-calendar/dist/calendar.min.css" />
-
 <style type="text/css">
 .ui.icon.input>i.icon:not(.link) {
     pointer-events: visiblepainted;
@@ -111,7 +107,6 @@
 			<!-- 검색카테고리 그리드 -->
 			<div class="column">
 		    	<select name="searchField" id="searchField" class="ui fluid dropdown">
-			      	<option selected disabled>검색 분야 선택</option>
 			      	<option value="회원번호">회원번호</option>
 			      	<option value="아이디">아이디</option>
 			      	<option value="이름">이름</option>
