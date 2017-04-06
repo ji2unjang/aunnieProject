@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aunnie.web.Criteria;
@@ -28,7 +29,7 @@ public class MemberController {
 		cri.setPerPageNum(10);
 		cri.setTotalCount(memberService.totalCount());
 		cri.setPage(pno);
-		return new ModelAndView("list", "list", memberService.getPage(cri));
+		return new ModelAndView("admin/members", "list", memberService.getPage(cri));
 	}
 	
 	@RequestMapping("/sign")
@@ -48,6 +49,7 @@ public class MemberController {
 
 	
 	@RequestMapping("/loginOk")
+	@ResponseBody
 	public String loginOk(MemberDTO memberdto, Model model){
 		
 		MemberDTO resultMemberdto = memberService.findUser(memberdto);
@@ -55,15 +57,15 @@ public class MemberController {
 		if(resultMemberdto != null && !"".equals(resultMemberdto)){
 			model.addAttribute("list", resultMemberdto);
 			
-			return "loginOk";
+			return "Y";
 		}else{
-			return "login";
+			return "N";
 		}
 		
 	}
 
 	@RequestMapping("/adminLog")
 	public String login(){
-		return "login";
+		return "admin/adminLogin";
 	}
 }
