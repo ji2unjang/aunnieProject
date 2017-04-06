@@ -30,6 +30,7 @@
 		/* 카테고리 뭐 선택했는지 검색창에 placeholder로 뜨게 하기 */
 		$("#searchField").on("change", function(){
 			var sel = $("#searchField").val();
+			$("#searchText").val("");
 			$("#searchText").attr("placeholder", sel);
 		});
 		
@@ -49,21 +50,20 @@
 					if(sel=="회원번호"){searchByNumber(input);}
 				}
 		});
-		
 		// Search member by member_no
 		function searchByNumber(number){
 			console.log("number: "+number);
+			var object;
 			$.ajax({
 				type:'POST',
 				data:{
-					no:number
+					"no":number
 				},
 				url:"searchMemberNo",
-				success:function(object){
-					console.log("object::"+object);
+				success:function(data){
+					console.log(data.length);
 					var html="";
-					$.each(object,function(index,entry){
-						console.log("index:"+index);
+					$.each(data,function(index,entry){
 						html+="<tr>";
 						html+="<td class='collapsing'>";
 						html+="<div class='ui fitted checkbox'>";
@@ -79,14 +79,40 @@
 						html+="<td>"+entry.degree+"</td>";
 						html+="</tr>";
 					});
-					$("tbody").html(html);
-				},
+					
+					$.ajax({
+						method:'POST',
+						data:{
+							length:data.length
+						},
+						url:"changePagination",
+						success:function(criteria){
+							console.dir(criteria);
+							var html2="";
+							if(criteria.prev==true){
+								html2+="<a class='icon item' href='memberList?pno="+(criteria.startPage-10)+"'>";
+								html2+="<i class='left chevron icon'></i></a>";
+							}
+							for(var i=criteria.startPage;i<=criteria.endPage;i++){
+								console.log(i);
+								html2+="<a class='item' href='memberList?pno="+i+"'>"+i;
+								html2+="</a>";
+							}
+							if(criteria.next==true){
+								html2+="<a class='icon item' href='memberList?pno="+(criteria.endPage+1)+"'>";
+								html2+="<i class='right chevron icon'></i></a>";
+							}
+							$("tbody").html(html);
+							$(".pagination").html(html2);
+						}
+					});
+				},//end success
 				error: function(){
 					alert("Fail! ");
-				}
-			});
-		}
-	});
+				}//end error
+			});//end Get Memberby no AJAX END----
+		}//function end.
+	});//start function end.
 </script>
 </head>
 <body>
@@ -178,15 +204,15 @@
 </table>
  <div class="ui right floated pagination menu">
    <c:if test="${criteria.prev==true}">
-	   <a class="icon item">
+	   <a class="icon item" href="memberList?pno=${criteria.startPage-10}">
 	     <i class="left chevron icon"></i>
 	   </a>
    </c:if>
    <c:forEach begin="${criteria.startPage}" end="${criteria.endPage}" var="index">
-	   <a class="item">${index}</a>
+	   <a class="item" href="memberList?pno=${index}">${index}</a>
    </c:forEach>
    <c:if test="${criteria.next==true }">
-	   <a class="icon item">
+	   <a class="icon item" href="memberList?pno=${criteria.endPage+1}">
 	     <i class="right chevron icon"></i>
 	   </a>
    </c:if>

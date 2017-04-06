@@ -21,6 +21,10 @@ public class Criteria {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	
+	public int getPage(){
+		return page;
+	}
 
 	public void setPerPageNum(int perPageNum) {
 		this.perPageNum = perPageNum;
@@ -29,7 +33,7 @@ public class Criteria {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		totalPage = totalCount%perPageNum==0? totalCount/perPageNum: totalCount/perPageNum+1;
-		if(page>1) page=1;
+		if(page<1) page=1;
 		startNo = (page-1)*perPageNum+1;
 		endNo = page*perPageNum;
 		
@@ -48,16 +52,16 @@ public class Criteria {
 			prev=false;
 		}
 		
-		System.out.println("총 데이터 수: "+totalCount);
-		System.out.println("한 페이지당 보여줄 게시물 수 : "+perPageNum);
-		System.out.println("필요한 페이지 수: "+totalPage);
-		System.out.println("현재 페이지: "+ page);
-		System.out.println("현재 페이지 게시물 시작 번호 : "+ startNo);
-		System.out.println("현재 페이지 게시물 마지막 번호 : "+ endNo);
-		System.out.println("Pagination 시작 페이지 번호 : "+ startPage);
-		System.out.println("Pagination 마지막 페이지 번호 : "+ endPage);
-		System.out.println("Prev: "+prev);
-		System.out.println("Next: "+next);
+//		System.out.println("총 데이터 수: "+totalCount);
+//		System.out.println("한 페이지당 보여줄 게시물 수 : "+perPageNum);
+//		System.out.println("필요한 페이지 수: "+totalPage);
+//		System.out.println("현재 페이지: "+ page);
+//		System.out.println("현재 페이지 게시물 시작 번호 : "+ startNo);
+//		System.out.println("현재 페이지 게시물 마지막 번호 : "+ endNo);
+//		System.out.println("Pagination 시작 페이지 번호 : "+ startPage);
+//		System.out.println("Pagination 마지막 페이지 번호 : "+ endPage);
+//		System.out.println("Prev: "+prev);
+//		System.out.println("Next: "+next);
 	}
 
 	public void setDisplayPageNum(int displayPageNum) {

@@ -44,7 +44,7 @@ public class MemberOracleDAO implements MemberDAO{
 	}
 
 	@Override
-	public List<MemberDTO> selectPage(Criteria cri) {
+	public List<MemberDTO> selectPage(Criteria cri){
 		return session.selectList(namespace+".selectPage",cri);
 	}
 

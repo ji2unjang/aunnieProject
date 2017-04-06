@@ -19,7 +19,7 @@ public class MemberController {
 
 	@Resource(name = "memberService")
 	private MemberService service;
-
+	
 	@RequestMapping("/memberList")
 	public ModelAndView list(@RequestParam(name="pno",defaultValue="1") int pno) {
 		Criteria cri = new Criteria();
