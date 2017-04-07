@@ -10,6 +10,12 @@
 		SELECT member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree FROM MEMBER
 		WHERE member_no= #{member_no}
 	</select>
+	
+	<select id="selectCal" resultType="member" parameterType="datepick">
+		select member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree from member
+		where regdate between #{startDate} and #{endDate}
+	</select>
+	
 	<select id="selectPage" resultType="member" parameterType="criteria">
 		SELECT member_no,id,pw,name,nickname,email,phone,address,birthday,regdate,mileage,total_price,degree
 		FROM 
