@@ -18,10 +18,76 @@
 .ui.icon.input>i.icon:not(.link) {
     pointer-events: visiblepainted;
 }
+
+#calBtn{
+	height : 38px;
+	margin-left: 15px;
+	margin-top: 13px;
+}
 </style>
 <script type="text/javascript">
-	$(function(){
-		   
+	$(function(){		
+		/* 달력 */
+		$( "#startDate" ).datepicker({
+			dateFormat:'ymmdd',
+	        changeYear: true,
+			changeMonth: true 
+		});
+		$( "#endDate" ).datepicker({
+			dateFormat:'ymmdd',
+			changeYear: true,
+			changeMonth: true
+		});
+		
+		$("#calBtn").on("click",function(){
+			var s = $("#startDate").val();
+			var e = $("#endDate").val();
+			if((s!="")&&(e!="")){
+				searchDate(s,e);
+			}
+		});
+		
+		function searchDate(cal1,cal2){
+			console.log(cal1);
+			console.log(cal2);
+			$.ajax({
+				type:'POST',
+				data:{
+					s:cal1,
+					e:cal2
+				},
+				url:"server02",
+				
+				success:function(object){
+					console.log(object)
+					var html="";
+					$.each(object,function(index,entry){
+						console.log("index:"+index);
+						html+="<tr>";
+						html+="<td class='collapsing'>";
+						html+="<div class='ui fitted checkbox'>";
+						html+="<input type='checkbox'> <label></label>";
+						html+="</div>";
+						html+="</td>";
+						html+="<td>"+entry.member_no+"</td>";
+						html+="<td>"+entry.id+"</td>";
+						html+="<td>"+entry.name+"</td>";
+						html+="<td>"+entry.email+"</td>";
+						html+="<td>"+entry.phone+"</td>";
+						html+="<td>"+entry.regdate+"</td>";
+						html+="<td>"+entry.degree+"</td>";
+						html+="</tr>";
+					});
+					$("tbody").html(html);
+				},
+				error:function(){
+					alert("실패");
+				}
+				
+			});
+			
+		}
+		
 		/* 검색 카테고리 */
 		$('.ui.dropdown').dropdown();
 		//DatePicker.
@@ -117,14 +183,25 @@
 </head>
 <body>
 <div class="ui two column right aligned  grid">
+
+	<!-- 달력 -->
 	<div class="column">
-		<div class="ui four column grid">
-			<!-- 달력시작 -->
+		<div class="ui four column grid form">
+			<!-- calendar start -->
 			<div class="column">
-				<input type="text" id="testDatepicker"> 
+				<div class="ui icon input">
+				   <input type="text" placeholder="Start" id="startDate">
+				   <i class="calendar icon"></i>
+			    </div>
 	    	</div>
+	    	<!-- calendar end -->
 		    <div class="column">
+		    	<div class="ui icon input">
+					<input type="text" placeholder="End" id="endDate">
+					<i class="calendar icon"></i>
+			    </div> 
 			</div>
+					<input type="button" value="검색" id="calBtn" class="ui button"/>
 		</div>
 	</div>
 
@@ -189,8 +266,9 @@
   	 <tr>
       <th></th>
       <th colspan="8">
-      	 <div class="ui right floated small primary labeled icon button">
-		   <i class="user icon"></i> Add User
+      	 <div class="ui right floated small labeled icon button">
+		   <i class="user icon"></i>
+		   Remove
 		 </div>
 		 <div class="ui small  button">
 		   Approve
